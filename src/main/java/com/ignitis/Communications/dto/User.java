@@ -7,30 +7,32 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
 
     private int id;
     private String username;
     private String password;
-    private String name;
-    private String lastName;
 
     public User() {
     }
 
-    public User(int id, String username, String password, String name, String lastName) {
+    public User(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.name = name;
-        this.lastName = lastName;
     }
 
-    public User(String username, String password, String name, String lastName) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.name = name;
-        this.lastName = lastName;
     }
 
     public int getId() {
@@ -57,30 +59,12 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

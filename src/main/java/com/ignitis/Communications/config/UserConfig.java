@@ -1,35 +1,35 @@
 package com.ignitis.Communications.config;
 
-import com.ignitis.Communications.dto.User;
+import com.ignitis.Communications.dto.Message;
 import com.ignitis.Communications.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Configuration
 public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(UserRepository repository){
+    CommandLineRunner commandLineRunnerUser(UserRepository repository){
+
         return args -> {
-            User tom = new User(
-                    "aaa",
-                    "aaa123",
-                    "Tom",
-                    "Tommy"
+            Message abc = new Message(
+                    "tom",
+                    LocalDateTime.now(),
+                    "Hello"
             );
 
-            User john = new User(
-                    "bbb",
-                    "bbb123",
-                    "John",
-                    "Johnny"
+            Message cba = new Message(
+                    "john",
+                    LocalDateTime.now(),
+                    "Welcome"
             );
 
             repository.saveAll(
-                    List.of(tom, john)
+                    List.of(abc, cba)
             );
         };
     }

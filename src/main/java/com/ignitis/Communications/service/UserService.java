@@ -1,59 +1,33 @@
 package com.ignitis.Communications.service;
 
-import com.ignitis.Communications.dto.User;
+import com.ignitis.Communications.dto.Message;
+import com.ignitis.Communications.repository.AdminRepository;
 import com.ignitis.Communications.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final AdminRepository adminRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, AdminRepository adminRepository) {
         this.userRepository = userRepository;
+        this.adminRepository = adminRepository;
     }
 
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    public List<Message> getMessage(String senderUsername) {
+        return userRepository.findBySenderUsername(senderUsername);
     }
 
-    public void addNewUser(User user) {
-        Optional<User> userOptional = userRepository.findUserByUsername(user.getUsername());
-        if (userOptional.isPresent()) {
-            throw new IllegalStateException("username exists");
+    public void sendMessage(Message message) {
+        if (!adminRepository.existsByUsername(message.getSenderUsername())) {
+            throw new IllegalStateException("No such user exists");
         }
-        userRepository.save(user);
+        userRepository.save(message);
     }
-
-    public void deleteUser(Integer userId) {
-        boolean exists = userRepository.existsById(userId);
-        if (!exists) {
-            throw new IllegalStateException("user with id " + userId + " does not exist");
-        }
-        userRepository.deleteById(userId);
-    }
-
-//    @Transactional
-//    public void updateUser(Integer userId, String username) {
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new IllegalStateException(
-//                        "user with id " + userId + " does not exist"));
-//
-//        if (username != null
-//                && username.length() > 0
-//                && !Objects.equals(user.getUsername(), username)) {
-//            Optional<User> userOptional = userRepository.findUserByUsername(username);
-//            if (userOptional.isPresent()) {
-//                throw new IllegalStateException("username is taken");
-//            }
-//            user.setUsername(username);
-//        }
-//    }
 }

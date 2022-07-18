@@ -1,6 +1,6 @@
 package com.ignitis.Communications.controller;
 
-import com.ignitis.Communications.dto.User;
+import com.ignitis.Communications.dto.Message;
 import com.ignitis.Communications.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,31 +11,20 @@ import java.util.List;
 @RequestMapping(path = "api/user")
 public class UserController {
 
-    private final UserService usersService;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserService usersService) {
-        this.usersService = usersService;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping
-    public List<User> getUsers() {
-        return usersService.getUsers();
+    @GetMapping("getMessage")
+    public List<Message> getUsersData(@RequestParam String senderUsername) {
+        return userService.getMessage(senderUsername);
     }
 
-    @PostMapping
-    public void addNewUser(@RequestBody User user) {
-        usersService.addNewUser(user);
+    @PostMapping("sendMessage")
+    public void sendMessage(@RequestBody Message message) {
+        userService.sendMessage(message);
     }
-
-    @DeleteMapping(path = "{userId}")
-    public void deleteUser(@PathVariable("userId") Integer userId) {
-        usersService.deleteUser(userId);
-    }
-
-//    @PutMapping(path = "{userId}")
-//    public void updateUser(@PathVariable("userId") Integer userId,
-//            @RequestParam(required = false) String username) {
-//        usersService.updateUser(userId, username);
-//    }
 }
