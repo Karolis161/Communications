@@ -29,13 +29,13 @@ public class AdminController {
         adminService.addNewUser(user);
     }
 
-    @DeleteMapping(path = "{userId}")
+    @DeleteMapping(path = "deleteUser/{userId}")
     public void deleteUser(@PathVariable("userId") Integer userId) {
         adminService.deleteUser(userId);
     }
 
     @GetMapping(path = "getUserData/{userId}")
-    public Map<String, Object> getUsersData(@PathVariable("userId") User user) {
-        return adminService.getUsersData(user);
+    public Map<String, Object> getUsersData(@PathVariable("userId") User user, String senderUsername) {
+        return adminService.getUsersData(user, senderUsername);
     }
 }

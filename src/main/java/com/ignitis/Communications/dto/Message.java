@@ -1,5 +1,7 @@
 package com.ignitis.Communications.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -18,24 +20,25 @@ public class Message {
             generator = "message_sequence"
     )
 
+    @JsonIgnore
     private int id;
     private String senderUsername;
-    private LocalDateTime time;
+    private LocalDateTime timeOfMessage;
     private String message;
 
     public Message() {
     }
 
-    public Message(int id, String senderUsername, LocalDateTime time, String message) {
+    public Message(int id, String senderUsername, LocalDateTime timeOfMessage, String message) {
         this.id = id;
         this.senderUsername = senderUsername;
-        this.time = time;
+        this.timeOfMessage = timeOfMessage;
         this.message = message;
     }
 
-    public Message(String senderUsername, LocalDateTime time, String message) {
+    public Message(String senderUsername, LocalDateTime timeOfMessage, String message) {
         this.senderUsername = senderUsername;
-        this.time = time;
+        this.timeOfMessage = timeOfMessage;
         this.message = message;
     }
 
@@ -55,12 +58,12 @@ public class Message {
         this.senderUsername = senderUsername;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public LocalDateTime getTimeOfMessage() {
+        return timeOfMessage;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = LocalDateTime.now();
+    public void setTimeOfMessage(LocalDateTime timeOfMessage) {
+        this.timeOfMessage = LocalDateTime.now();
     }
 
     public String getMessage() {
@@ -69,5 +72,15 @@ public class Message {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", senderUsername='" + senderUsername + '\'' +
+                ", timeOfMessage=" + timeOfMessage +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

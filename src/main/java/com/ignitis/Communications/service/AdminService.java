@@ -2,22 +2,22 @@ package com.ignitis.Communications.service;
 
 import com.ignitis.Communications.dto.User;
 import com.ignitis.Communications.repository.AdminRepository;
+import com.ignitis.Communications.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AdminService {
 
     private final AdminRepository adminRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public AdminService(AdminRepository userRepository) {
-        this.adminRepository = userRepository;
+    public AdminService(AdminRepository adminRepository, UserRepository userRepository) {
+        this.adminRepository = adminRepository;
+        this.userRepository = userRepository;
     }
 
     public List<User> getUsers() {
@@ -40,12 +40,16 @@ public class AdminService {
         adminRepository.deleteById(userId);
     }
 
-    public Map<String, Object> getUsersData(User user) {
-
+    public Map<String, Object> getUsersData(User user, String senderUsername) {
         Map<String, Object> map = new HashMap<>();
-        map.put("username", user.getUsername());
-        map.put("name", "aaaa");
 
+        map.put("Username", user.getUsername());
+        map.put("Number of messages", "aaaa");
+        map.put("Time of first message", "aaaa");
+        map.put("Time of last message", "aaaa");
+        map.put("Average message length", "aaaa");
+        map.put("Text of last message", "aaaa");
+        System.out.println(userRepository.countBySenderUsername(senderUsername));
         return map;
     }
 }

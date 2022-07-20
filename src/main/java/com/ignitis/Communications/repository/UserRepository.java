@@ -9,4 +9,8 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<Message, Integer> {
     List<Message> findBySenderUsername(String senderUsername);
+    int countBySenderUsername(String senderUsername);
+    Message findFirstBySenderUsernameOrderByTimeOfMessageAsc(String senderUsername);
+    Message findFirstBySenderUsernameOrderByTimeOfMessageDesc(String senderUsername);
+    List<Message> findMessageBySenderUsername(String senderUsername);
 }

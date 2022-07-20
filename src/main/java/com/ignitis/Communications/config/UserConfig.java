@@ -13,23 +13,47 @@ import java.util.List;
 public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerUser(UserRepository repository){
+    CommandLineRunner commandLineRunnerUser(UserRepository userRepository){
 
         return args -> {
-            Message abc = new Message(
+            Message tom = new Message(
                     "tom",
                     LocalDateTime.now(),
                     "Hello"
             );
 
-            Message cba = new Message(
+            Message john = new Message(
                     "john",
                     LocalDateTime.now(),
                     "Welcome"
             );
 
-            repository.saveAll(
-                    List.of(abc, cba)
+            Message dan = new Message(
+                    "dan",
+                    LocalDateTime.now(),
+                    "How are you?"
+            );
+
+            Message james = new Message(
+                    "james",
+                    LocalDateTime.now(),
+                    "Where are you?"
+            );
+
+            Message dan1 = new Message(
+                    "dan",
+                    LocalDateTime.now(),
+                    "What's up?"
+            );
+
+            Message dan2 = new Message(
+                    "dan",
+                    LocalDateTime.now(),
+                    "HEYYYY"
+            );
+
+            userRepository.saveAll(
+                    List.of(tom, john, dan, james, dan1, dan2)
             );
         };
     }

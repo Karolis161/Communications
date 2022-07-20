@@ -25,8 +25,18 @@ public class AdminConfig {
                     "john123"
             );
 
+            User dan = new User(
+                    "dan",
+                    "dan123"
+            );
+
+            User james = new User(
+                    "james",
+                    "james123"
+            );
+
             repository.saveAll(
-                    List.of(tom, john)
+                    List.of(tom, john, dan, james)
             );
         };
     }
