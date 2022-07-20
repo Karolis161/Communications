@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(path = "api/admin")
+@RequestMapping("api/admin")
 public class AdminController {
 
     private final AdminService adminService;
@@ -19,23 +19,23 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping(path = "getUsers")
+    @GetMapping("getUsers")
     public List<User> getUsers() {
         return adminService.getUsers();
     }
 
-    @PostMapping(path = "addNewUser")
+    @PostMapping("addNewUser")
     public void addNewUser(@RequestBody User user) {
         adminService.addNewUser(user);
     }
 
-    @DeleteMapping(path = "deleteUser/{userId}")
+    @DeleteMapping("deleteUser/{userId}")
     public void deleteUser(@PathVariable("userId") Integer userId) {
         adminService.deleteUser(userId);
     }
 
-    @GetMapping(path = "getUserData/{userId}")
-    public Map<String, Object> getUsersData(@PathVariable("userId") User user, String senderUsername) {
-        return adminService.getUsersData(user, senderUsername);
+    @GetMapping("getUserData")
+    public Map<String, Object> getUserData(@RequestParam String senderUsername) {
+        return adminService.getUserData(senderUsername);
     }
 }

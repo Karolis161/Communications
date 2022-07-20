@@ -1,6 +1,6 @@
 package com.ignitis.Communications.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -19,17 +19,12 @@ public class User {
             generator = "user_sequence"
     )
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private int id;
     private String username;
     private String password;
 
     public User() {
-    }
-
-    public User(int id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
     }
 
     public User(String username, String password) {

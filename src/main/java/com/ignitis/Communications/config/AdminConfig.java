@@ -12,7 +12,7 @@ import java.util.List;
 public class AdminConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerAdmin(AdminRepository repository){
+    CommandLineRunner commandLineRunnerAdmin(AdminRepository repository) {
 
         return args -> {
             User tom = new User(

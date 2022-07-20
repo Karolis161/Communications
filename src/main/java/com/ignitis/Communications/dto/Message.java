@@ -23,17 +23,11 @@ public class Message {
     @JsonIgnore
     private int id;
     private String senderUsername;
+
     private LocalDateTime timeOfMessage;
     private String message;
 
     public Message() {
-    }
-
-    public Message(int id, String senderUsername, LocalDateTime timeOfMessage, String message) {
-        this.id = id;
-        this.senderUsername = senderUsername;
-        this.timeOfMessage = timeOfMessage;
-        this.message = message;
     }
 
     public Message(String senderUsername, LocalDateTime timeOfMessage, String message) {

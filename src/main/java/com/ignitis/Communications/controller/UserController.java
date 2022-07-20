@@ -1,12 +1,10 @@
 package com.ignitis.Communications.controller;
 
 import com.ignitis.Communications.dto.Message;
-import com.ignitis.Communications.dto.User;
 import com.ignitis.Communications.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +26,7 @@ public class UserController {
 
     @GetMapping("getUserData")
     public Map<String, Object> getUserData(@RequestParam String senderUsername) {
-        return userService.getUserData(senderUsername);
+        return UserService.getUserData(senderUsername);
     }
 
     @PostMapping("sendMessage")

@@ -13,7 +13,7 @@ import java.util.List;
 public class UserConfig {
 
     @Bean
-    CommandLineRunner commandLineRunnerUser(UserRepository userRepository){
+    CommandLineRunner commandLineRunnerUser(UserRepository userRepository) {
 
         return args -> {
             Message tom = new Message(
