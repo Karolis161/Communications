@@ -1,4 +1,4 @@
-package com.ignitis.Communications.dto;
+package com.ignitis.communications.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

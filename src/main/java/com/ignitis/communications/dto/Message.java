@@ -1,4 +1,4 @@
-package com.ignitis.Communications.dto;
+package com.ignitis.communications.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,15 +25,15 @@ public class Message {
     private String senderUsername;
 
     private LocalDateTime timeOfMessage;
-    private String message;
+    private String userMessage;
 
     public Message() {
     }
 
-    public Message(String senderUsername, LocalDateTime timeOfMessage, String message) {
+    public Message(String senderUsername, LocalDateTime timeOfMessage, String userMessage) {
         this.senderUsername = senderUsername;
         this.timeOfMessage = timeOfMessage;
-        this.message = message;
+        this.userMessage = userMessage;
     }
 
     public int getId() {
@@ -60,12 +60,12 @@ public class Message {
         this.timeOfMessage = LocalDateTime.now();
     }
 
-    public String getMessage() {
-        return message;
+    public String getUserMessage() {
+        return userMessage;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setUserMessage(String userMessage) {
+        this.userMessage = userMessage;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class Message {
                 "id=" + id +
                 ", senderUsername='" + senderUsername + '\'' +
                 ", timeOfMessage=" + timeOfMessage +
-                ", message='" + message + '\'' +
+                ", message='" + userMessage + '\'' +
                 '}';
     }
 }

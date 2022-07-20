@@ -1,12 +1,11 @@
-package com.ignitis.Communications.controller;
+package com.ignitis.communications.controller;
 
-import com.ignitis.Communications.dto.Message;
-import com.ignitis.Communications.service.UserService;
+import com.ignitis.communications.dto.Message;
+import com.ignitis.communications.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/user")
@@ -22,11 +21,6 @@ public class UserController {
     @GetMapping("getMessage")
     public List<Message> getMessage(@RequestParam String senderUsername) {
         return userService.getMessage(senderUsername);
-    }
-
-    @GetMapping("getUserData")
-    public Map<String, Object> getUserData(@RequestParam String senderUsername) {
-        return UserService.getUserData(senderUsername);
     }
 
     @PostMapping("sendMessage")

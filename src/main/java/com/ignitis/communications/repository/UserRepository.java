@@ -1,6 +1,6 @@
-package com.ignitis.Communications.repository;
+package com.ignitis.communications.repository;
 
-import com.ignitis.Communications.dto.Message;
+import com.ignitis.communications.dto.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

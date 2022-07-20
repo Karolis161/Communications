@@ -1,7 +1,7 @@
-package com.ignitis.Communications.controller;
+package com.ignitis.communications.controller;
 
-import com.ignitis.Communications.dto.User;
-import com.ignitis.Communications.service.AdminService;
+import com.ignitis.communications.dto.User;
+import com.ignitis.communications.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

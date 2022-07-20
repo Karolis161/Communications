@@ -1,7 +1,7 @@
-package com.ignitis.Communications.config;
+package com.ignitis.communications.config;
 
-import com.ignitis.Communications.dto.User;
-import com.ignitis.Communications.repository.AdminRepository;
+import com.ignitis.communications.dto.User;
+import com.ignitis.communications.repository.AdminRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
